@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <math.h> 
+#include <time.h> 
+
+void gamemechanic();
+void loading();
+
+int main(){
+
+    char action;
+
+    printf("Do you want to play Russian Roulette?\n Y/N");
+    scanf(" %c", &action);
+
+        if (action == 'Y' || action == 'y')
+        {
+            system("Reloading...");
+        }
+        else if (action == 'Y' || action == 'y')
+        {
+            loading();
+            system("Reloading...");
+            loading();
+            system("Reloading...");
+
+            gamemechanic();
+        }
+        else
+        {
+            // code 
+        }
+    
+}
+
+void gamemechanic(){
+    
+            srand(time(NULL));
+
+            int rnd = rand() % 6;
+
+            if(rnd < 1){
+                printf(" #   #  ###  # #  #    ###    ###   \n");
+                printf("   #    # #  # #   #   #  #   #     \n");
+                printf("   #    # #  # #       ###    ###   \n");
+                printf("   #    # #  # #       # #    #     \n");
+                printf("   #    ###  ###       #   #  ###   \n");
+                printf("--------------------------------    \n");
+                printf("     ###   ###   ##   ###           \n");
+                printf("     #  #  #    #  #  #  #          \n");
+                printf("     #  #  ###  ####  #  #          \n");
+                printf("     #  #  #    #  #  #  #          \n");
+                printf("     ###   ###  #  #  ###           \n");
+                
+            } else {
+
+                return 0;
+        }    
+}
+
+void loading(){
+    
+    printf(" #    ###   ##   ###   ###  #  #  ####   \n");
+    printf(" #    # #  #  #  #  #   #   ## #  #      \n");
+    printf(" #    # #  ####  #  #   #   # ##  #  ##  \n");
+    printf(" #    # #  #  #  #  #   #   #  #  #   #  \n");
+    printf(" ###  ###  #  #  ###   ###  #  #  #####  \n");
+
+    return 0;
+}
