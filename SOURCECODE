@@ -1,89 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h> 
-#include <math.h> 
-#include <time.h> 
+#include <stdlib.h>
+#include <time.h>
 
-void gamemechanic();
-void loading();
+int main() {
+    srand(time(NULL));
+    int bulletPosition, chamber;
+    char choice;
 
-int main(){
+        // attempt at limiting the bullet to one by setting its 'position'
+    bulletPosition = rand() % 6 + 1;
 
-    char action;
-    
-    printf("Welcome to the Salty Spitoon!\n");
-    printf("Do you wanna enter?\n Y/N");
-    scanf(" %c", &action);
+    while (1) {
+        printf("Enter 's' to spin the barrel or 'f' to fire: ");
+        scanf(" %c", &choice);
 
-    if (action == 'Y' || action == 'y'){                                        // FIX THIS IF STATEMENT SO THAT MAIN GAME FUNCTIONS WORK
-        return Game(); 
-    } else {
-        return main();
-    }
-                                                                                 
-}
+        if (choice == 's') {
+            bulletPosition = rand() % 6 + 1;
+            printf("You spun the barrel.\n");
+        } else if (choice == 'f') {
+            chamber = rand() % 6 + 1;
+            printf("You pulled the trigger.\n");
 
-int Game(){
-
-    char action;
-
-    printf("Do you want to play Russian Roulette?\n Y/N");
-    scanf(" %c", &action);
-
-        if (action == 'Y' || action == 'y')
-        {
-            system("Reloading...");
-        }
-        else if (action == 'Y' || action == 'y')
-        {
-            loading();
-            gamemechanic();
-        }
-        else
-        {
-            printf("Get out of here!\n");
-            system("Reloading...");
-            return main();
-        }
-    
-}
-
-void gamemechanic(){                                                                // OPTIMIZE THIS FUNCTION
-    
-            srand(time(NULL));
-
-            int rnd = rand() % 6;
-
-            if(rnd < 1){
-                
-                printf(" ---------------------------------   \n");
-                printf(" #   #  ###  # #  #    ###    ###   \n");
-                printf("   #    # #  # #   #   #  #   #     \n");
-                printf("   #    # #  # #       ###    ###   \n");
-                printf("   #    # #  # #       # #    #     \n");
-                printf("   #    ###  ###       #   #  ###   \n");
-                printf("  -------------------------------   \n");
-                printf("      ###   ###   ##   ###          \n");
-                printf("      #  #  #    #  #  #  #         \n");
-                printf("      #  #  ###  ####  #  #         \n");
-                printf("      #  #  #    #  #  #  #         \n");
-                printf("      ###   ###  #  #  ###          \n");
-                printf(" ---------------------------------  \n");
-                
+            if (chamber == bulletPosition) {
+                printf("Bang! You're shot.\n");
+                break;
             } else {
+                printf("Click! You're safe.\n");
+            }
+        } else {
+            printf("Invalid choice. Try again.\n");
+            continue;
+        }
+    }
 
-                return gamemechanic();
-        }    
-}
-
-void loading(){                                                                      // OPTIMIZE THIS FUNCTION
-    
-    printf(" --------------------------------------  \n");
-    printf(" #    ###   ##   ###   ###  #  #  ####   \n");
-    printf(" #    # #  #  #  #  #   #   ## #  #      \n");
-    printf(" #    # #  ####  #  #   #   # ##  #  ##  \n");
-    printf(" #    # #  #  #  #  #   #   #  #  #   #  \n");
-    printf(" ###  ###  #  #  ###   ###  #  #  #####  \n");
-    printf(" --------------------------------------  \n");
-
-    return loading();
+    return 0;
 }
