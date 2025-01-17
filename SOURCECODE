@@ -9,6 +9,22 @@ void loading();
 int main(){
 
     char action;
+    
+    printf("Welcome to the Salty Spitoon!\n");
+    printf("Do you wanna enter?\n Y/N");
+    scanf(" %c", &action);
+
+    if (action == 'Y' || action == 'y'){                                        // FIX THIS IF STATEMENT SO THAT MAIN GAME FUNCTIONS WORK
+        return Game(); 
+    } else {
+        return main();
+    }
+                                                                                 
+}
+
+int Game(){
+
+    char action;
 
     printf("Do you want to play Russian Roulette?\n Y/N");
     scanf(" %c", &action);
@@ -20,51 +36,54 @@ int main(){
         else if (action == 'Y' || action == 'y')
         {
             loading();
-            system("Reloading...");
-            loading();
-            system("Reloading...");
-
             gamemechanic();
         }
         else
         {
-            // code 
+            printf("Get out of here!\n");
+            system("Reloading...");
+            return main();
         }
     
 }
 
-void gamemechanic(){
+void gamemechanic(){                                                                // OPTIMIZE THIS FUNCTION
     
             srand(time(NULL));
 
             int rnd = rand() % 6;
 
             if(rnd < 1){
+                
+                printf(" ---------------------------------   \n");
                 printf(" #   #  ###  # #  #    ###    ###   \n");
                 printf("   #    # #  # #   #   #  #   #     \n");
                 printf("   #    # #  # #       ###    ###   \n");
                 printf("   #    # #  # #       # #    #     \n");
                 printf("   #    ###  ###       #   #  ###   \n");
-                printf("--------------------------------    \n");
-                printf("     ###   ###   ##   ###           \n");
-                printf("     #  #  #    #  #  #  #          \n");
-                printf("     #  #  ###  ####  #  #          \n");
-                printf("     #  #  #    #  #  #  #          \n");
-                printf("     ###   ###  #  #  ###           \n");
+                printf("  -------------------------------   \n");
+                printf("      ###   ###   ##   ###          \n");
+                printf("      #  #  #    #  #  #  #         \n");
+                printf("      #  #  ###  ####  #  #         \n");
+                printf("      #  #  #    #  #  #  #         \n");
+                printf("      ###   ###  #  #  ###          \n");
+                printf(" ---------------------------------  \n");
                 
             } else {
 
-                return 0;
+                return gamemechanic();
         }    
 }
 
-void loading(){
+void loading(){                                                                      // OPTIMIZE THIS FUNCTION
     
+    printf(" --------------------------------------  \n");
     printf(" #    ###   ##   ###   ###  #  #  ####   \n");
     printf(" #    # #  #  #  #  #   #   ## #  #      \n");
     printf(" #    # #  ####  #  #   #   # ##  #  ##  \n");
     printf(" #    # #  #  #  #  #   #   #  #  #   #  \n");
     printf(" ###  ###  #  #  ###   ###  #  #  #####  \n");
+    printf(" --------------------------------------  \n");
 
-    return 0;
+    return loading();
 }
